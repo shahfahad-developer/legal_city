@@ -44,7 +44,10 @@ function LocationIcon() {
 function Header({ currentLanguage, setCurrentLanguage, translations }) {
   const navigate = useNavigate();
   const [showLanguageMenu, setShowLanguageMenu] = useState(false);
+<<<<<<< HEAD
   const [showDirectoryMenu, setShowDirectoryMenu] = useState(false);
+=======
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
 
   const languages = [
     { code: 'EN', name: 'English' },
@@ -61,6 +64,13 @@ function Header({ currentLanguage, setCurrentLanguage, translations }) {
     navigate('/register');
   };
 
+<<<<<<< HEAD
+=======
+  const handleLawyerDirectoryClick = () => {
+    navigate('/lawyers');
+  };
+
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
   const handleLanguageSelect = (language) => {
     setCurrentLanguage(language.code);
     setShowLanguageMenu(false);
@@ -71,6 +81,7 @@ function Header({ currentLanguage, setCurrentLanguage, translations }) {
       <div className="w-full max-w-[1440px] mx-auto flex items-center justify-between px-4 lg:px-[144px]">
         <div className="flex items-center gap-6">
           <LegalCityLogo />
+<<<<<<< HEAD
           <div className="relative">
             <button 
               onClick={() => setShowDirectoryMenu(!showDirectoryMenu)}
@@ -105,6 +116,17 @@ function Header({ currentLanguage, setCurrentLanguage, translations }) {
               </div>
             )}
           </div>
+=======
+          <button 
+            onClick={handleLawyerDirectoryClick}
+            className="hidden md:flex items-center text-white text-sm gap-2 hover:opacity-90 transition-opacity"
+          >
+            <span>{translations[currentLanguage].lawyerDirectory}</span>
+            <svg width="8" height="7" viewBox="0 0 8 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0.491211 0.34375L3.99121 5.34375L7.49121 0.34375" stroke="white" strokeWidth="1.2"/>
+            </svg>
+          </button>
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
         </div>
 
         <div className="flex items-center gap-2">
@@ -263,6 +285,7 @@ function LawyerCard({
   successAuthor,
   successDate,
   successDescription,
+<<<<<<< HEAD
   id = 1,
 }) {
   const navigate = useNavigate();
@@ -331,10 +354,34 @@ function LawyerCard({
           <h4 className="text-sm font-semibold text-gray-900 mb-2">{successTitle}</h4>
           <div className="flex items-center gap-1 mb-2">
             <div className="flex gap-0.5">
+=======
+}) {
+  return (
+    <div className="w-full max-w-[364px] h-[412px] flex-shrink-0 bg-white rounded-md overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+      <div className="h-full flex flex-col">
+        <div className="bg-gradient-to-b from-[#0071BC] to-[#00D2FF] bg-clip-text text-transparent text-base font-semibold mb-[16px]">
+          {category}
+        </div>
+
+        <div className="bg-[#F5F5F5] border border-[#5A5A5A]/30 h-[218px] mb-[16px] p-4 flex gap-4">
+          <img
+            src={image}
+            alt={name}
+            className="w-[100px] h-[136px] object-cover flex-shrink-0"
+          />
+
+          <div className="flex-1 flex flex-col">
+            <h3 className="text-2xl font-semibold bg-gradient-to-b from-[#0071BC] to-[#00D2FF] bg-clip-text text-transparent mb-[6px]">
+              {name}
+            </h3>
+
+            <div className="flex gap-[2px] mb-[17px]">
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
               {[...Array(5)].map((_, i) => (
                 <StarIcon key={i} />
               ))}
             </div>
+<<<<<<< HEAD
           </div>
           <div className="text-xs text-gray-500 mb-2">
             {successAuthor} • {successDate}
@@ -352,6 +399,53 @@ function LawyerCard({
           >
             View Profile
           </button>
+=======
+
+            <div className="text-sm text-black mb-[13px]">
+              Legal Rating {rating.toFixed(1)}
+            </div>
+
+            <div className="mt-auto">
+              <div className="text-[#5A5A5A] text-sm font-medium uppercase tracking-[2.73px] mb-[4px]">
+                Location
+              </div>
+              <div className="flex items-start gap-2">
+                <LocationIcon />
+                <div className="text-[#5A5A5A] text-[10px]">
+                  {location}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-[#F5F5F5] border border-[#5A5A5A]/30 flex-1 p-2">
+          <div className="text-[#5A5A5A] text-sm font-medium uppercase tracking-[2.73px] mb-[5px]">
+            Practice Areas
+          </div>
+          <div className="text-sm text-black mb-[10px]">
+            {practiceAreas}
+          </div>
+
+          <div className="text-sm font-semibold text-black mb-[6px]">
+            {successTitle}
+          </div>
+
+          <div className="flex gap-[2px] mb-[6px]">
+            {[...Array(5)].map((_, i) => (
+              <StarIcon key={i} />
+            ))}
+          </div>
+
+          <div className="flex items-center gap-2 text-[#5A5A5A] text-[10px] mb-[10px]">
+            <span>{successAuthor}</span>
+            <span>{successDate}</span>
+          </div>
+
+          <div className="text-[#5A5A5A] text-[10px] leading-relaxed line-clamp-3">
+            {successDescription}
+          </div>
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
         </div>
       </div>
     </div>
@@ -364,6 +458,7 @@ function LawyerCarousel() {
 
   const lawyers = [
     {
+<<<<<<< HEAD
       id: 1,
       category: "Corporate Law",
       name: "Nedime Acikli",
@@ -427,6 +522,66 @@ function LawyerCarousel() {
       successAuthor: "Business Client",
       successDate: "Dec 2024",
       successDescription: "Expert handling of complex commercial property transactions. Darlene's attention to detail and market knowledge ensured smooth closings and protected our investment interests.",
+=======
+      category: "Business",
+      name: "Nedime Acikli",
+      rating: 10.0,
+      location: "1 Station Road, London E17 8AA",
+      image: "https://api.builder.io/api/v1/image/assets/TEMP/d70964b5007735e60786db4890aeb2c95f7fafc9?width=200",
+      practiceAreas: "Business, Libel & Slander",
+      successTitle: "Success",
+      successAuthor: "By Ronald Richards",
+      successDate: "October 24, 2018",
+      successDescription: "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
+    },
+    {
+      category: "Business",
+      name: "Melek Arican",
+      rating: 10.0,
+      location: "22 Church Lane, Birmingham B3 2NN",
+      image: "https://api.builder.io/api/v1/image/assets/TEMP/c933ad1de266b833da3ba3476e8ecd6c5b16255a?width=200",
+      practiceAreas: "Business, Libel & Slander",
+      successTitle: "Success",
+      successAuthor: "By Ralph Edwards",
+      successDate: "July 14, 2015",
+      successDescription: "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
+    },
+    {
+      category: "Business",
+      name: "Nika Monhart",
+      rating: 10.0,
+      location: "36 North Street, Chichester PO19 1LY",
+      image: "https://api.builder.io/api/v1/image/assets/TEMP/7e2d9d9504fa1c07abac9fdc18602c4b3ced9a78?width=200",
+      practiceAreas: "Business, Libel & Slander",
+      successTitle: "Success",
+      successAuthor: "By Jane Cooper",
+      successDate: "March 6, 2018",
+      successDescription: "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
+    },
+    {
+      category: "Business",
+      name: "Ronald Richards",
+      rating: 10.0,
+      location: "1 Station Road, London E17 8AA",
+      image: "https://api.builder.io/api/v1/image/assets/TEMP/cc67d9df49bf011597965946ac09a3d887c8dd83?width=200",
+      practiceAreas: "Business, Libel & Slander",
+      successTitle: "Success",
+      successAuthor: "By Ronald Richards",
+      successDate: "October 24, 2018",
+      successDescription: "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
+    },
+    {
+      category: "Business",
+      name: "Darlene Robertson",
+      rating: 10.0,
+      location: "1 Station Road, London E17 8AA",
+      image: "https://api.builder.io/api/v1/image/assets/TEMP/cc67d9df49bf011597965946ac09a3d887c8dd83?width=200",
+      practiceAreas: "Business, Libel & Slander",
+      successTitle: "Success",
+      successAuthor: "By Ronald Richards",
+      successDate: "October 24, 2018",
+      successDescription: "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
     },
   ];
 
@@ -461,6 +616,7 @@ function LawyerCarousel() {
   };
 
   return (
+<<<<<<< HEAD
     <section className="w-full bg-gradient-to-b from-gray-50 to-white py-16 relative">
       <div className="w-full max-w-7xl mx-auto px-6">
         <div className="text-center mb-12">
@@ -519,12 +675,64 @@ function LawyerCarousel() {
             />
           ))}
         </div>
+=======
+    <section className="w-full bg-[#E3E3E3] py-8 lg:py-[34px] relative min-h-[480px] flex items-center">
+      <div className="w-full max-w-[1440px] mx-auto px-6 lg:px-[154px]">
+        <div className="overflow-hidden">
+          <div
+            className="flex transition-transform duration-500 ease-in-out gap-5"
+            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+          >
+            {Array.from({ length: totalSlides }).map((_, slideIndex) => (
+              <div key={slideIndex} className="min-w-full flex flex-col md:flex-row justify-center items-center md:items-start gap-5">
+                {lawyers.slice(slideIndex * cardsPerSlide, slideIndex * cardsPerSlide + cardsPerSlide).map((lawyer, index) => (
+                  <LawyerCard key={index} {...lawyer} />
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <button
+        onClick={prevSlide}
+        className="hidden lg:flex absolute left-0 lg:left-[48px] top-1/2 -translate-y-1/2 w-[60px] lg:w-[120px] h-full lg:h-[480px] items-center justify-center hover:bg-black/5 transition-colors"
+        aria-label="Previous slide"
+      >
+        <svg width="14" height="24" viewBox="0 0 14 24" fill="none">
+          <path d="M13 2L3 12L13 22" stroke="#5A5A5A" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      </button>
+
+      <button
+        onClick={nextSlide}
+        className="hidden lg:flex absolute right-0 lg:right-[48px] top-1/2 -translate-y-1/2 w-[60px] lg:w-[120px] h-full lg:h-[480px] items-center justify-center hover:bg-black/5 transition-colors"
+        aria-label="Next slide"
+      >
+        <svg width="14" height="24" viewBox="0 0 14 24" fill="none">
+          <path d="M1 22L11 12L1 2" stroke="#5A5A5A" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      </button>
+
+      <div className="absolute bottom-4 lg:bottom-8 left-1/2 -translate-x-1/2 flex gap-4">
+        {Array.from({ length: totalSlides }).map((_, index) => (
+          <button
+            key={index}
+            onClick={() => goToSlide(index)}
+            className={`w-[10px] h-[10px] rounded-full transition-all ${
+              index === currentSlide ? "bg-[#5A5A5A]" : "bg-[#5A5A5A]/20"
+            }`}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
       </div>
     </section>
   );
 }
 
 /**
+<<<<<<< HEAD
  * Footer Component
  */
 
@@ -601,6 +809,8 @@ function Footer({ currentLanguage, translations }) {
 }
 
 /**
+=======
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
  * Main Page Component
  */
 
@@ -614,7 +824,14 @@ export default function UserInterface() {
       specialty: 'Specialty',
       cityStateZip: 'City, State or Zip',
       searchLawyers: 'Search Lawyers',
+<<<<<<< HEAD
       topFeaturesLawyers: 'Top Features lawyers near you'
+=======
+      topFeaturesLawyers: 'Top Features lawyers near you',
+      lawyerDirectory: 'Lawyer Directory',
+      login: 'Login',
+      signup: 'Signup'
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
     },
     ES: {
       findLawyer: 'Encontrar Abogado',
@@ -622,7 +839,14 @@ export default function UserInterface() {
       specialty: 'Especialidad',
       cityStateZip: 'Ciudad, Estado o Código Postal',
       searchLawyers: 'Buscar Abogados',
+<<<<<<< HEAD
       topFeaturesLawyers: 'Los mejores abogados cerca de ti'
+=======
+      topFeaturesLawyers: 'Los mejores abogados cerca de ti',
+      lawyerDirectory: 'Directorio de Abogados',
+      login: 'Iniciar Sesión',
+      signup: 'Registrarse'
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
     },
     FR: {
       findLawyer: 'Trouver un Avocat',
@@ -630,7 +854,14 @@ export default function UserInterface() {
       specialty: 'Spécialité',
       cityStateZip: 'Ville, État ou Code Postal',
       searchLawyers: 'Rechercher des Avocats',
+<<<<<<< HEAD
       topFeaturesLawyers: 'Les meilleurs avocats près de chez vous'
+=======
+      topFeaturesLawyers: 'Les meilleurs avocats près de chez vous',
+      lawyerDirectory: 'Annuaire des Avocats',
+      login: 'Connexion',
+      signup: 'S\'inscrire'
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
     },
     DE: {
       findLawyer: 'Anwalt Finden',
@@ -638,14 +869,36 @@ export default function UserInterface() {
       specialty: 'Fachgebiet',
       cityStateZip: 'Stadt, Bundesland oder PLZ',
       searchLawyers: 'Anwälte Suchen',
+<<<<<<< HEAD
       topFeaturesLawyers: 'Top Anwälte in Ihrer Nähe'
+=======
+      topFeaturesLawyers: 'Top Anwälte in Ihrer Nähe',
+      lawyerDirectory: 'Anwaltsverzeichnis',
+      login: 'Anmelden',
+      signup: 'Registrieren'
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
     }
   };
 
   return (
+<<<<<<< HEAD
     <>
       <HeroSection currentLanguage={currentLanguage} translations={translations} />
       <LawyerCarousel />
     </>
+=======
+    <div className="min-h-screen bg-white font-sans" style={{ fontFamily: "'Inter', sans-serif" }}>
+      <Header currentLanguage={currentLanguage} setCurrentLanguage={setCurrentLanguage} translations={translations} />
+      <HeroSection currentLanguage={currentLanguage} translations={translations} />
+
+      <div className="bg-white py-6 sm:py-8">
+        <h2 className="text-xl sm:text-2xl font-semibold text-black text-center px-4">
+          {translations[currentLanguage].topFeaturesLawyers}
+        </h2>
+      </div>
+
+      <LawyerCarousel />
+    </div>
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
   );
 }

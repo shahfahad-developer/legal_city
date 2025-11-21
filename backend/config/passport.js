@@ -29,12 +29,21 @@ passport.use(
         let userRecord = null;
         let tableName = desiredRole === 'lawyer' ? 'lawyers' : 'users';
 
+<<<<<<< HEAD
         // If exists in both (data inconsistency), prefer lawyer account
         if (userUser && userLawyer) {
           console.warn('Email exists in both users and lawyers tables for', email);
           roleToUse = 'lawyer';
           tableName = 'lawyers';
           userRecord = userLawyer;
+=======
+        // If exists in both (data inconsistency), prefer existing user account
+        if (userUser && userLawyer) {
+          console.warn('Email exists in both users and lawyers tables for', email);
+          roleToUse = 'user';
+          tableName = 'users';
+          userRecord = userUser;
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
         } else if (desiredRole === 'user') {
           if (userLawyer && !userUser) {
             // Force login as existing lawyer to prevent cross-role login
@@ -77,16 +86,25 @@ passport.use(
           };
 
           if (roleToUse === 'lawyer') {
+<<<<<<< HEAD
             insertData.is_verified = 1; // Google OAuth users are auto-verified
             insertData.lawyer_verified = 1; // Google OAuth lawyers are auto-verified
           } else {
             insertData.role = 'user';
             insertData.is_verified = 1; // Google OAuth users are auto-verified
+=======
+            insertData.is_verified = 0; // Pending until submit later or completion
+            insertData.lawyer_verified = 0; // Admin review required
+          } else {
+            insertData.role = 'user';
+            insertData.is_verified = 0; // Pending until submit later or completion
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
           }
 
           const [id] = await db(tableName).insert(insertData);
           userRecord = await db(tableName).where({ id }).first();
         } else {
+<<<<<<< HEAD
           // Ensure google_id is set and user is verified
           if (!userRecord.google_id) {
             const updateData = {
@@ -98,11 +116,23 @@ passport.use(
               updateData.lawyer_verified = 1; // Google OAuth lawyers are auto-verified
             }
             await db(tableName).where({ id: userRecord.id }).update(updateData);
+=======
+          // Ensure google_id is set and email marked verified
+          if (!userRecord.google_id) {
+            await db(tableName).where({ id: userRecord.id }).update({
+              google_id: profile.id,
+              email_verified: 1,
+            });
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
             userRecord = await db(tableName).where({ id: userRecord.id }).first();
           }
         }
 
+<<<<<<< HEAD
         const token = generateToken(userRecord);
+=======
+        const token = generateToken(userRecord, roleToUse);
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
         console.log(`Google OAuth - Role used: ${roleToUse}, email: ${email}`);
         done(null, { user: userRecord, token, role: roleToUse });
       } catch (error) {
@@ -161,7 +191,11 @@ passport.use(
           }
         }
 
+<<<<<<< HEAD
         const token = generateToken(user);
+=======
+        const token = generateToken(user, 'user');
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
         done(null, { user, token });
       } catch (error) {
         done(error, null);

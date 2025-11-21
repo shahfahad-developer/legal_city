@@ -4,13 +4,21 @@
   "description": "",
   "main": "db.js",
   "scripts": {
+<<<<<<< HEAD
     "test": "jest",
+=======
+    "test": "echo \"Error: no test specified\" && exit 1",
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
     "start": "node server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+<<<<<<< HEAD
+=======
+    "axios": "^1.13.2",
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
     "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
@@ -27,10 +35,16 @@
     "nodemailer": "^7.0.10",
     "passport": "^0.7.0",
     "passport-facebook": "^3.0.0",
+<<<<<<< HEAD
     "passport-google-oauth20": "^2.0.0"
   },
   "devDependencies": {
     "jest": "^30.2.0",
     "supertest": "^7.1.4"
+=======
+    "passport-google-oauth20": "^2.0.0",
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1"
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
   }
 }

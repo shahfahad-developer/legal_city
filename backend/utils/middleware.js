@@ -16,15 +16,31 @@ const authenticateToken = async (req, res, next) => {
 
   // Check if user exists in users or lawyers table
   let user = await db('users').where({ id: decoded.id }).first();
+<<<<<<< HEAD
   if (!user) {
     user = await db('lawyers').where({ id: decoded.id }).first();
+=======
+  let userType = 'user';
+  
+  if (!user) {
+    user = await db('lawyers').where({ id: decoded.id }).first();
+    userType = 'lawyer';
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
   }
 
   if (!user) {
     return res.status(403).json({ message: 'User not found' });
   }
 
+<<<<<<< HEAD
   req.user = { ...decoded, isAdmin: user.is_admin || user.role === 'admin' || false };
+=======
+  req.user = { 
+    ...decoded, 
+    userType,
+    isAdmin: user.is_admin || user.role === 'admin' || false 
+  };
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
   next();
 };
 
@@ -109,6 +125,7 @@ const authenticateLawyer = async (req, res, next) => {
   next();
 };
 
+<<<<<<< HEAD
 // Role-based authentication for blogs
 const requireAuth = async (req, res, next) => {
   const authHeader = req.headers['authorization'];
@@ -216,3 +233,6 @@ module.exports = {
   requireAdmin,
   checkBlogOwnership
 };
+=======
+module.exports = { authenticateToken, verifyAdmin, rateLimit, authenticateLawyer };
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47

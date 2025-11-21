@@ -85,7 +85,11 @@ const login = async (req, res) => {
       await db('users').where({ id: user.id }).update({ role: 'admin' });
     }
 
+<<<<<<< HEAD
     const token = generateToken(user);
+=======
+    const token = generateToken(user, role);
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
 
     // Prepare user data for redirect logic
     const userData = {
@@ -300,6 +304,7 @@ const resetPassword = async (req, res) => {
 
 const getProfile = async (req, res) => {
   try {
+<<<<<<< HEAD
     // Check lawyers table first for this user ID
     let user = await db('lawyers').where({ id: req.user.id }).select('id', 'name', 'username', 'email', 'registration_id', 'law_firm', 'speciality', 'address', 'zip_code', 'city', 'state', 'country', 'mobile_number', 'is_verified', 'lawyer_verified', 'profile_completed', 'google_id').first();
     if (user) {
@@ -313,6 +318,10 @@ const getProfile = async (req, res) => {
 
     // Check users table if not found in lawyers
     user = await db('users').where({ id: req.user.id }).select('id', 'name', 'username', 'email', 'address', 'zip_code', 'city', 'state', 'country', 'mobile_number', 'role', 'is_admin', 'is_verified', 'profile_completed', 'google_id').first();
+=======
+    // Check users table
+    let user = await db('users').where({ id: req.user.id }).select('id', 'name', 'username', 'email', 'address', 'zip_code', 'city', 'state', 'country', 'mobile_number', 'role', 'is_admin', 'is_verified', 'profile_completed', 'google_id').first();
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
     if (user) {
       return res.json({
         ...user,
@@ -322,6 +331,20 @@ const getProfile = async (req, res) => {
       });
     }
 
+<<<<<<< HEAD
+=======
+    // Check lawyers table
+    user = await db('lawyers').where({ id: req.user.id }).select('id', 'name', 'username', 'email', 'registration_id', 'law_firm', 'speciality', 'address', 'zip_code', 'city', 'state', 'country', 'mobile_number', 'is_verified', 'lawyer_verified', 'profile_completed', 'google_id').first();
+    if (user) {
+      return res.json({
+        ...user,
+        role: 'lawyer',
+        is_admin: false,
+        verified: user.profile_completed === 1
+      });
+    }
+
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
     return res.status(404).json({ message: 'User not found' });
   } catch (error) {
     console.error(error);

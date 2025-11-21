@@ -1,15 +1,38 @@
 {
+<<<<<<< HEAD
   "short_name": "LegalCity",
   "name": "LegalCity - Legal Services Platform",
+=======
+  "short_name": "React App",
+  "name": "Create React App Sample",
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
   "icons": [
     {
       "src": "favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
+<<<<<<< HEAD
+=======
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
     }
   ],
   "start_url": ".",
   "display": "standalone",
+<<<<<<< HEAD
   "theme_color": "#0071BC",
   "background_color": "#E7EFFD"
+=======
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
 }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -23,6 +24,16 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="flex items-center">
+=======
+import React from 'react';
+
+const Header = () => {
+  return (
+    <header className="bg-white shadow-sm border-b border-gray-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          <div className="flex items-center">
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
             <div className="flex items-center gap-2">
               <div className="bg-blue-600 rounded-full px-4 py-2 flex items-center gap-0">
                 <span className="text-xl font-bold text-white">Lega</span>
@@ -33,6 +44,7 @@ const Header = () => {
               </div>
               <span className="text-xl font-bold text-blue-600">City</span>
             </div>
+<<<<<<< HEAD
           </Link>
           <nav className="hidden md:flex space-x-8">
             <Link 
@@ -74,6 +86,14 @@ const Header = () => {
             </div>
             <button className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Services</button>
             <button className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Contact</button>
+=======
+          </div>
+          <nav className="hidden md:flex space-x-8">
+            <button className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Home</button>
+            <button className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">About</button>
+            <button className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Services</button>
+            <button className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Contact</button>
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
           </nav>
         </div>
       </div>

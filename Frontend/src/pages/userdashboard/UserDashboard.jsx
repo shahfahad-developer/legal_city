@@ -10,7 +10,11 @@ const Sidebar = ({ isOpen, onClose, isCollapsed, onToggleCollapse }) => {
   const menuItems = [
     { icon: "https://api.builder.io/api/v1/image/assets/TEMP/2f0c8c8d7635b366b2eac869a4a83753ba829af6?width=48", label: "Blog", path: "/blog" },
     { icon: "https://api.builder.io/api/v1/image/assets/TEMP/b83955cda14e3150d58c5f8856dba1c32c93d36b?width=48", label: "Messages", path: "/messages" },
+<<<<<<< HEAD
     { icon: "https://api.builder.io/api/v1/image/assets/TEMP/20095a265d253a905d31653e5e034766d50fa558?width=48", label: "Directory", path: "/dashboard/lawyers" },
+=======
+    { icon: "https://api.builder.io/api/v1/image/assets/TEMP/20095a265d253a905d31653e5e034766d50fa558?width=48", label: "Directory", path: "/directory" },
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
     { icon: "https://api.builder.io/api/v1/image/assets/TEMP/ba389f49632462ccea957de8f25e8777312f1cd0?width=48", label: "Forms", path: "/forms" },
     { icon: "https://api.builder.io/api/v1/image/assets/TEMP/bb774d091421c903ce99f30442b09d93b75ffe4c?width=48", label: "Social Media", path: "/social-media" },
     { icon: "https://api.builder.io/api/v1/image/assets/TEMP/306d0dbe1e5279e83e68f14a3d3c39ccf7c3423d?width=48", label: "Tasks", path: "/tasks" },
@@ -20,7 +24,11 @@ const Sidebar = ({ isOpen, onClose, isCollapsed, onToggleCollapse }) => {
     { icon: "https://api.builder.io/api/v1/image/assets/TEMP/8546f8527778902e9559a1f7e78de6c757aecf92?width=48", label: "Profile", path: "/profile" },
     { icon: "https://api.builder.io/api/v1/image/assets/TEMP/46434e229fe79898dedcc285339ffa760ab1ba45?width=48", label: "Calendar", path: "/calendar" },
     { icon: "https://api.builder.io/api/v1/image/assets/TEMP/4982b7bc2ac67a6ced3ca7e854eb56e2849377fc?width=48", label: "Q&A", path: "/qa" },
+<<<<<<< HEAD
     { icon: "https://api.builder.io/api/v1/image/assets/TEMP/9cfca6b6a2172379467f583891bf9be19de991a7?width=48", label: "Find a Lawyer", path: "/dashboard/lawyers" },
+=======
+    { icon: "https://api.builder.io/api/v1/image/assets/TEMP/9cfca6b6a2172379467f583891bf9be19de991a7?width=48", label: "Find a Lawyer", path: "/find-lawyer" },
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
     { icon: "https://api.builder.io/api/v1/image/assets/TEMP/3b54c1b27312a1fd5eeb7d42cc13ccd8530ce889?width=48", label: "Refer", path: "/refer" },
     { icon: "https://api.builder.io/api/v1/image/assets/TEMP/8ee49bdf701fc8b9667fd0ce61796ac43b4fb529?width=48", label: "Settings", path: "/settings" },
   ];
@@ -295,7 +303,11 @@ const Footer = ({ sidebarWidth = 0 }) => {
     {
       title: "Browse Our Site",
       links: [
+<<<<<<< HEAD
         { text: "Find a Lawyer", path: "/dashboard/find-lawyer" },
+=======
+        "Find a Lawyer",
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
         "Review Your Lawyer",
         "Legal Advice",
         "Recently Answered Questions",
@@ -348,10 +360,17 @@ const Footer = ({ sidebarWidth = 0 }) => {
                 {section.links.map((link, linkIndex) => (
                   <li key={linkIndex}>
                     <a
+<<<<<<< HEAD
                       href={typeof link === 'object' ? link.path : "/"}
                       className="text-gray-300 text-sm leading-relaxed hover:text-white transition-colors"
                     >
                       {typeof link === 'object' ? link.text : link}
+=======
+                      href="/"
+                      className="text-gray-300 text-sm leading-relaxed hover:text-white transition-colors"
+                    >
+                      {link}
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
                     </a>
                   </li>
                 ))}

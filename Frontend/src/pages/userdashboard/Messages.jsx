@@ -1,4 +1,5 @@
 import React from 'react';
+<<<<<<< HEAD
 
 const Messages = () => {
   return (
@@ -9,6 +10,12 @@ const Messages = () => {
       </div>
     </div>
   );
+=======
+import ChatPage from './ChatPage';
+
+const Messages = () => {
+  return <ChatPage />;
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
 };
 
 export default Messages;

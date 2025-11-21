@@ -5,8 +5,12 @@ import api from '../../utils/api';
 import {
   Users, UserCheck, UserX, Briefcase, CheckCircle, 
   XCircle, Trash2, Shield, ShieldOff, RefreshCw,
+<<<<<<< HEAD
   TrendingUp, Activity, Clock, Search, ChevronLeft, ChevronRight,
   FileText, Eye, Edit
+=======
+  TrendingUp, Activity, Clock, Search, ChevronLeft, ChevronRight
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
 } from 'lucide-react';
 
 const AdminDashboard = () => {
@@ -42,12 +46,15 @@ const AdminDashboard = () => {
   // Activity logs
   const [activityLogs, setActivityLogs] = useState([]);
   const [logsPagination, setLogsPagination] = useState({ page: 1, limit: 20, total: 0 });
+<<<<<<< HEAD
   
   // Blog management
   const [blogs, setBlogs] = useState([]);
   const [blogsPagination, setBlogsPagination] = useState({ page: 1, limit: 10, total: 0 });
   const [blogsSearch, setBlogsSearch] = useState('');
   const [blogsFilter, setBlogsFilter] = useState('all');
+=======
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
 
   // Auto-refresh interval (every 30 seconds)
   useEffect(() => {
@@ -68,8 +75,11 @@ const AdminDashboard = () => {
       fetchLawyers();
     } else if (activeTab === 'activity') {
       fetchActivityLogs();
+<<<<<<< HEAD
     } else if (activeTab === 'blogs') {
       fetchBlogs();
+=======
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
     }
   }, [activeTab, usersPagination.page, lawyersPagination.page, logsPagination.page]);
 
@@ -83,8 +93,11 @@ const AdminDashboard = () => {
       await fetchLawyers();
     } else if (activeTab === 'activity') {
       await fetchActivityLogs();
+<<<<<<< HEAD
     } else if (activeTab === 'blogs') {
       await fetchBlogs();
+=======
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
     }
     setRefreshing(false);
   };
@@ -161,6 +174,7 @@ const AdminDashboard = () => {
     }
   };
 
+<<<<<<< HEAD
   const fetchBlogs = async () => {
     try {
       setLoading(true);
@@ -181,6 +195,8 @@ const AdminDashboard = () => {
     }
   };
 
+=======
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
   const handleVerifyLawyer = async (lawyerId) => {
     try {
       await api.put(`/admin/verify-lawyer/${lawyerId}`);
@@ -253,6 +269,7 @@ const AdminDashboard = () => {
     }
   };
 
+<<<<<<< HEAD
   const handleDeleteBlog = async (blogId) => {
     if (!window.confirm('Are you sure you want to delete this blog?')) return;
     
@@ -265,6 +282,8 @@ const AdminDashboard = () => {
     }
   };
 
+=======
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
   const handleLogout = () => {
     logout();
     navigate('/');
@@ -723,6 +742,7 @@ const AdminDashboard = () => {
     </div>
   );
 
+<<<<<<< HEAD
   // Blog Management View
   const renderBlogs = () => (
     <div className="bg-white rounded-lg shadow">
@@ -835,6 +855,8 @@ const AdminDashboard = () => {
     </div>
   );
 
+=======
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
   // Activity Logs View
   const renderActivityLogs = () => (
     <div className="bg-white rounded-lg shadow">
@@ -1002,6 +1024,7 @@ const AdminDashboard = () => {
             </button>
 
             <button
+<<<<<<< HEAD
               onClick={() => setActiveTab('blogs')}
               className={`py-4 px-1 border-b-2 font-medium text-sm ${
                 activeTab === 'blogs'
@@ -1015,6 +1038,8 @@ const AdminDashboard = () => {
               </div>
             </button>
             <button
+=======
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
               onClick={() => setActiveTab('activity')}
               className={`py-4 px-1 border-b-2 font-medium text-sm ${
                 activeTab === 'activity'
@@ -1036,7 +1061,10 @@ const AdminDashboard = () => {
         {activeTab === 'dashboard' && renderDashboard()}
         {activeTab === 'users' && renderUsers()}
         {activeTab === 'lawyers' && renderLawyers()}
+<<<<<<< HEAD
         {activeTab === 'blogs' && renderBlogs()}
+=======
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
         {activeTab === 'activity' && renderActivityLogs()}
       </main>
     </div>

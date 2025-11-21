@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
+<<<<<<< HEAD
 import { Search, User, Calendar, FileText, Phone, Mail, Clock, CreditCard, Users, DollarSign, File, ChevronLeft, ChevronRight, PieChart, Home, UserCheck, BarChart3, CheckSquare, FolderOpen } from 'lucide-react';
+=======
+import { Search, User, Calendar, FileText, Phone, Mail, Clock, CreditCard, Users, DollarSign, File, ChevronLeft, ChevronRight, PieChart, Home, UserCheck, BarChart3, CheckSquare, FolderOpen, MessageSquare } from 'lucide-react';
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
 import api from '../../utils/api';
 import QuickActions from '../../components/QuickActions';
 import CreateClientModal from '../../components/modals/CreateClientModal';
@@ -10,7 +14,11 @@ import CalendarPage from './CalendarPage';
 import ReportsPage from './ReportsPage';
 import TasksPage from './TasksPage';
 import DocumentsPage from './DocumentsPage';
+<<<<<<< HEAD
 import BlogManagement from './BlogManagement';
+=======
+import ChatPage from '../userdashboard/ChatPage';
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
 
 export default function LawyerDashboard() {
   const [showCaseForm, setShowCaseForm] = useState(false);
@@ -131,12 +139,20 @@ export default function LawyerDashboard() {
           <nav className="flex items-center gap-6 md:gap-8">
             {[
               { id: 'home', label: 'Home', icon: Home, action: () => { setActiveNavItem('home'); window.scrollTo(0, 0); } },
+<<<<<<< HEAD
+=======
+              { id: 'messages', label: 'Messages', icon: MessageSquare, action: () => { setActiveNavItem('messages'); } },
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
               { id: 'contacts', label: 'Contacts', icon: UserCheck, action: () => { setActiveNavItem('contacts'); alert('Contacts page coming soon!'); } },
               { id: 'calendar', label: 'Calendar', icon: Calendar, action: () => { setActiveNavItem('calendar'); alert('Calendar page coming soon!'); } },
               { id: 'reports', label: 'Reports', icon: BarChart3, action: () => { setActiveNavItem('reports'); alert('Reports page coming soon!'); } },
               { id: 'tasks', label: 'Tasks', icon: CheckSquare, action: () => { setActiveNavItem('tasks'); alert('Tasks page coming soon!'); } },
+<<<<<<< HEAD
               { id: 'documents', label: 'Documents', icon: FolderOpen, action: () => { setActiveNavItem('documents'); alert('Documents page coming soon!'); } },
               { id: 'blogs', label: 'Blogs', icon: FileText, action: () => { setActiveNavItem('blogs'); } }
+=======
+              { id: 'documents', label: 'Documents', icon: FolderOpen, action: () => { setActiveNavItem('documents'); alert('Documents page coming soon!'); } }
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
             ].map((item) => {
               const Icon = item.icon;
               const isActive = activeNavItem === item.id;
@@ -181,12 +197,23 @@ export default function LawyerDashboard() {
 
       {/* MAIN CONTENT */}
       <main className="px-4 md:px-8 lg:px-36 pb-16">
+<<<<<<< HEAD
+=======
+        {activeNavItem === 'messages' && (
+          <div className="-m-8 h-screen">
+            <ChatPage />
+          </div>
+        )}
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
         {activeNavItem === 'contacts' && <ContactsPage />}
         {activeNavItem === 'calendar' && <CalendarPage />}
         {activeNavItem === 'reports' && <ReportsPage />}
         {activeNavItem === 'tasks' && <TasksPage />}
         {activeNavItem === 'documents' && <DocumentsPage />}
+<<<<<<< HEAD
         {activeNavItem === 'blogs' && <BlogManagement />}
+=======
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
         
         {activeNavItem === 'home' && (
         <>
@@ -424,7 +451,11 @@ export default function LawyerDashboard() {
             <div>
               <h3 className="text-white text-base font-bold mb-6">Browse Our Site</h3>
               <ul className="space-y-2">
+<<<<<<< HEAD
                 <li><a href="/lawyers" className="text-[#CCC] text-sm hover:text-white">Find a Lawyer</a></li>
+=======
+                <li><a href="#" className="text-[#CCC] text-sm hover:text-white">Find a Lawyer</a></li>
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
                 <li><a href="#" className="text-[#CCC] text-sm hover:text-white">Review Your Lawyer</a></li>
                 <li><a href="#" className="text-[#CCC] text-sm hover:text-white">Legal Advice</a></li>
                 <li><a href="#" className="text-[#CCC] text-sm hover:text-white">Recently Answered Questions</a></li>

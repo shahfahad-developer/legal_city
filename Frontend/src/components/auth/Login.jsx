@@ -266,6 +266,7 @@ const Login = ({ onSwitchToRegister, onSwitchToForgot, onLoginSuccess }) => {
           {loading ? 'Logging in...' : 'Log in'}
         </button>
 
+<<<<<<< HEAD
         {/* Back to Home Link */}
         <div className="text-center mb-4">
           <p className="text-gray-600 text-sm">
@@ -280,6 +281,8 @@ const Login = ({ onSwitchToRegister, onSwitchToForgot, onLoginSuccess }) => {
           </p>
         </div>
 
+=======
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
         {/* Sign Up Link */}
         <div className="text-center">
           <p className="text-gray-600 text-sm">

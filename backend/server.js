@@ -1,13 +1,36 @@
 require('dotenv').config();
 const express = require('express');
+<<<<<<< HEAD
+=======
+const http = require('http');
+const socketIo = require('socket.io');
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
 const cors = require('cors');
 const session = require('express-session');
 const passport = require('./config/passport');
 const authRoutes = require('./routes/auth');
+<<<<<<< HEAD
 
 const app = express();
 const PORT = process.env.PORT || 5001;
 
+=======
+const db = require('./db');
+
+const app = express();
+const server = http.createServer(app);
+const PORT = process.env.PORT || 5001;
+
+// Socket.io setup with CORS
+const io = socketIo(server, {
+  cors: {
+    origin: process.env.FRONTEND_URL || "http://localhost:3000",
+    methods: ["GET", "POST"],
+    credentials: true
+  }
+});
+
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
 // Middleware
 app.use(cors({
   origin: process.env.FRONTEND_URL || 'http://localhost:3000',
@@ -75,10 +98,16 @@ const callsRoutes = require('./routes/calls');
 app.use('/api/calls', callsRoutes);
 const messagesRoutes = require('./routes/messages');
 app.use('/api/messages', messagesRoutes);
+<<<<<<< HEAD
+=======
+const chatRoutes = require('./routes/chatRoutes');
+app.use('/api/chat', chatRoutes);
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
 const paymentsRoutes = require('./routes/payments');
 app.use('/api/payments', paymentsRoutes);
 const intakesRoutes = require('./routes/intakes');
 app.use('/api/intakes', intakesRoutes);
+<<<<<<< HEAD
 const blogsRoutes = require('./routes/blogs');
 app.use('/api/blogs', blogsRoutes);
 
@@ -92,6 +121,91 @@ app.get('/api/popular-blogs', blogController.getPopularPosts);
 
 // Lawyer blog management route
 app.get('/api/lawyer/blogs', requireAuth, requireLawyer, blogController.getLawyerBlogs);
+=======
+
+// Store active users
+const activeUsers = new Map();
+
+// Socket.io connection handling
+io.on('connection', (socket) => {
+  console.log('New client connected:', socket.id);
+
+  socket.on('user_connected', (userId) => {
+    activeUsers.set(userId, socket.id);
+    console.log(`User ${userId} connected with socket ${socket.id}`);
+    io.emit('user_status', { userId, status: 'online' });
+  });
+
+  socket.on('send_message', async (data) => {
+    try {
+      const { sender_id, sender_type, receiver_id, receiver_type, content } = data;
+      
+      const [messageId] = await db('chat_messages').insert({
+        sender_id,
+        sender_type,
+        receiver_id,
+        receiver_type,
+        content,
+        read_status: false,
+        created_at: new Date()
+      });
+
+      const message = await db('chat_messages').where('id', messageId).first();
+      const receiverSocketId = activeUsers.get(receiver_id);
+      if (receiverSocketId) {
+        io.to(receiverSocketId).emit('receive_message', message);
+      }
+      socket.emit('message_sent', message);
+    } catch (error) {
+      console.error('Error sending message:', error);
+      socket.emit('message_error', { error: 'Failed to send message' });
+    }
+  });
+
+  socket.on('mark_as_read', async (data) => {
+    try {
+      const { messageIds } = data;
+      await db('chat_messages').whereIn('id', messageIds).update({ read_status: true });
+      socket.emit('messages_marked_read', { messageIds });
+    } catch (error) {
+      console.error('Error marking messages as read:', error);
+    }
+  });
+
+  socket.on('typing', (data) => {
+    const { receiver_id } = data;
+    const receiverSocketId = activeUsers.get(receiver_id);
+    if (receiverSocketId) {
+      io.to(receiverSocketId).emit('user_typing', {
+        sender_id: data.sender_id,
+        isTyping: true
+      });
+    }
+  });
+
+  socket.on('stop_typing', (data) => {
+    const { receiver_id } = data;
+    const receiverSocketId = activeUsers.get(receiver_id);
+    if (receiverSocketId) {
+      io.to(receiverSocketId).emit('user_typing', {
+        sender_id: data.sender_id,
+        isTyping: false
+      });
+    }
+  });
+
+  socket.on('disconnect', () => {
+    for (let [userId, socketId] of activeUsers.entries()) {
+      if (socketId === socket.id) {
+        activeUsers.delete(userId);
+        io.emit('user_status', { userId, status: 'offline' });
+        console.log(`User ${userId} disconnected`);
+        break;
+      }
+    }
+  });
+});
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
 
 // Health check
 app.get('/health', (req, res) => {
@@ -109,7 +223,11 @@ app.use((req, res) => {
   res.status(404).json({ message: 'Route not found' });
 });
 
+<<<<<<< HEAD
 app.listen(PORT, () => {
+=======
+server.listen(PORT, () => {
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
   console.log(`Server running on port ${PORT}`);
 
   // Verify email transporter connection

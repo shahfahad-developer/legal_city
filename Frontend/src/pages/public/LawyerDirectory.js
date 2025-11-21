@@ -3,7 +3,10 @@ import { toast } from 'sonner';
 import { useNavigate, useLocation } from 'react-router-dom';
 import api from '../../utils/api';
 import { useAuth } from '../../context/AuthContext';
+<<<<<<< HEAD
 import DashboardHeader from '../../components/layout/DashboardHeader';
+=======
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
 
 // Sample lawyer data
 const sampleLawyers = [
@@ -145,17 +148,24 @@ function LawyerCard({
   description,
   imageUrl,
   category,
+<<<<<<< HEAD
   fromDashboard = false
+=======
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
 }) {
   const navigate = useNavigate();
   const { user } = useAuth();
 
   const handleViewProfile = () => {
+<<<<<<< HEAD
     if (fromDashboard) {
       navigate(`/dashboard/lawyer/${id}`);
     } else {
       navigate(`/lawyer/${id}`);
     }
+=======
+    navigate(`/lawyer/${id}`);
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
   };
 
   const handleChatWithLawyer = () => {
@@ -257,6 +267,23 @@ function LawyerCard({
             {description}
           </p>
           <div className="flex space-x-2 flex-shrink-0">
+<<<<<<< HEAD
+=======
+            {user && (
+              <button 
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleChatWithLawyer();
+                }}
+                className="px-4 py-2 bg-[#00a884] text-white text-sm rounded-lg hover:bg-[#008f72] transition-colors flex items-center space-x-1"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+                <span>Chat</span>
+              </button>
+            )}
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
             <button 
               onClick={(e) => {
                 e.stopPropagation();
@@ -293,6 +320,7 @@ function ChevronDown({ className }) {
 }
 
 function LawyerDirectory() {
+<<<<<<< HEAD
   const { user } = useAuth();
   const location = useLocation();
   const [lawyers, setLawyers] = useState(sampleLawyers);
@@ -309,11 +337,16 @@ function LawyerDirectory() {
   
   // Check if user came from dashboard
   const cameFromDashboard = user && location.pathname === '/dashboard/lawyers';
+=======
+  const [lawyers, setLawyers] = useState(sampleLawyers);
+  const [loading, setLoading] = useState(false);
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
 
   useEffect(() => {
     fetchLawyers();
   }, []);
 
+<<<<<<< HEAD
   useEffect(() => {
     applyFilters();
   }, [lawyers, filters]);
@@ -360,6 +393,8 @@ function LawyerDirectory() {
     setFilteredLawyers(lawyers);
   };
 
+=======
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
   const fetchLawyers = async () => {
     setLoading(true);
     try {
@@ -369,7 +404,10 @@ function LawyerDirectory() {
       toast.error(error.response?.data?.message || 'Failed to load lawyers');
       // Fallback to sample data if API fails
       setLawyers(sampleLawyers);
+<<<<<<< HEAD
       setFilteredLawyers(sampleLawyers);
+=======
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
     } finally {
       setLoading(false);
     }
@@ -377,11 +415,15 @@ function LawyerDirectory() {
 
   return (
     <div className="min-h-screen bg-white">
+<<<<<<< HEAD
       {cameFromDashboard && <DashboardHeader />}
       {!cameFromDashboard && (
         <div className="pt-16"> {/* Add padding when using MainLayout header */}
         </div>
       )}
+=======
+      <Header />
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
       
       {/* Hero Section */}
       <div className="relative w-full h-70 overflow-hidden">
@@ -418,11 +460,16 @@ function LawyerDirectory() {
       {/* Main Content */}
       <div className="max-w-screen-xl mx-auto px-4 lg:px-36 py-6">
         {/* Filter Buttons */}
+<<<<<<< HEAD
         <div className="flex flex-wrap gap-3 mb-6">
           <button 
             onClick={clearFilters}
             className="h-10 px-4 rounded-lg border border-gray-600 flex items-center gap-2 hover:bg-gray-50 transition-colors"
           >
+=======
+        <div className="flex flex-wrap gap-3 mb-10">
+          <button className="h-10 px-4 rounded-lg border border-gray-600 flex items-center gap-2 hover:bg-gray-50 transition-colors">
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
             <svg
               className="w-5 h-5 stroke-gray-600"
               width="19"
@@ -436,6 +483,7 @@ function LawyerDirectory() {
                 stroke="#5A5A5A"
               />
             </svg>
+<<<<<<< HEAD
             <span className="text-xs text-gray-600">Clear Filters</span>
           </button>
 
@@ -495,6 +543,20 @@ function LawyerDirectory() {
           <p className="text-gray-600 text-sm">
             Showing {filteredLawyers.length} of {lawyers.length} lawyers
           </p>
+=======
+            <span className="text-xs text-gray-600">All Filters</span>
+          </button>
+
+          <button className="h-10 px-4 rounded-lg border border-gray-600 flex items-center gap-2 hover:bg-gray-50 transition-colors">
+            <span className="text-xs text-gray-600">Years Licensed</span>
+            <ChevronDown className="w-3 h-3 text-gray-600" />
+          </button>
+
+          <button className="h-10 px-4 rounded-lg border border-gray-600 flex items-center gap-2 hover:bg-gray-50 transition-colors">
+            <span className="text-xs text-gray-600">Practice Area</span>
+            <ChevronDown className="w-3 h-3 text-gray-600" />
+          </button>
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
         </div>
 
         {/* Loading State */}
@@ -505,6 +567,7 @@ function LawyerDirectory() {
         ) : (
           /* Lawyer Cards */
           <div className="space-y-6">
+<<<<<<< HEAD
             {filteredLawyers.length > 0 ? (
               filteredLawyers.map((lawyer) => (
                 <LawyerCard key={lawyer.id} {...lawyer} fromDashboard={cameFromDashboard} />
@@ -520,6 +583,11 @@ function LawyerDirectory() {
                 </button>
               </div>
             )}
+=======
+            {lawyers.map((lawyer) => (
+              <LawyerCard key={lawyer.id} {...lawyer} />
+            ))}
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
           </div>
         )}
       </div>

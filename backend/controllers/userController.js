@@ -102,7 +102,11 @@ const loginUser = async (req, res) => {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
 
+<<<<<<< HEAD
     const token = generateToken(user);
+=======
+    const token = generateToken(user, 'user');
+>>>>>>> 2d887b0789fadae1c29b3db3c146c5173bf30e47
 
     res.json({ token, user: { id: user.id, name: user.name, email: user.email, role: 'user' } });
   } catch (error) {
